@@ -1,22 +1,22 @@
 const { chromium } = require('playwright');
 
 (async () => {
-    console.log("🚀 bot start");
+  console.log("bot start");
 
-    const browser = await chromium.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
+  const browser = await chromium.launch({
+    headless: true,
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage'
+    ]
+  });
 
-    const page = await browser.newPage();
+  const page = await browser.newPage();
 
-    await page.goto('https://www.xiaohongshu.com');
+  await page.goto('https://example.com');
 
-    console.log("✅ page opened");
+  console.log("page loaded");
 
-    await page.waitForTimeout(5000);
-
-    await browser.close();
-
-    console.log("🏁 bot finished");
+  await browser.close();
 })();
